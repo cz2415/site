@@ -112,13 +112,31 @@
             </h1>
             <p class="hero-lead rise" style="--d: 120ms" data-i18n="hero.lead"></p>
             <div class="hero-cta rise" style="--d: 180ms">
-              <a class="btn btn-primary" href="#download">
-                <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M12 3v12" /><path d="m7 11 5 5 5-5" /><path d="M4 20h16" />
-                </svg>
-                <span data-i18n="hero.ctaPrimary">下载 Windows 版</span>
-              </a>
+              <div class="btn-split" data-download-split>
+                <a class="btn btn-primary" href="https://github.com/cz2415/scratch-pad-app/releases/latest/download/Scratch-Pad-x64-portable.exe">
+                  <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 3v12" /><path d="m7 11 5 5 5-5" /><path d="M4 20h16" />
+                  </svg>
+                  <span data-i18n="hero.ctaPrimary">下载便携版</span>
+                </a>
+                <button class="btn-split-arrow" type="button" aria-haspopup="true" aria-expanded="false"
+                  data-i18n-aria-label="hero.ctaMore" data-i18n-title="hero.ctaMore">
+                  <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+                <div class="btn-split-menu" hidden>
+                  <a href="https://github.com/cz2415/scratch-pad-app/releases/latest/download/Scratch-Pad-x64-setup.exe">
+                    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M12 3v12" /><path d="m7 11 5 5 5-5" /><path d="M4 20h16" />
+                    </svg>
+                    <span data-i18n="hero.ctaInstaller">下载安装版</span>
+                  </a>
+                </div>
+              </div>
               <a class="btn btn-ghost" href="#features">
                 <span data-i18n="hero.ctaSecondary">查看特性</span>
                 <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -384,12 +402,15 @@
             <h2 data-i18n="cta.title"></h2>
             <p data-i18n="cta.desc"></p>
             <div class="cta-actions">
-              <a class="btn btn-primary btn-lg" href="#download">
+              <a class="btn btn-primary btn-lg" href="https://github.com/cz2415/scratch-pad-app/releases/latest/download/Scratch-Pad-x64-portable.exe">
                 <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                   stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M12 3v12" /><path d="m7 11 5 5 5-5" /><path d="M4 20h16" />
                 </svg>
-                <span data-i18n="cta.button"></span>
+                <span data-i18n="cta.portable"></span>
+              </a>
+              <a class="btn btn-outline btn-lg" href="https://github.com/cz2415/scratch-pad-app/releases/latest/download/Scratch-Pad-x64-setup.exe">
+                <span data-i18n="cta.installer"></span>
               </a>
               <a class="btn btn-outline btn-lg" href="#format">
                 <span data-i18n="cta.secondary"></span>

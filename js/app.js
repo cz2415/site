@@ -517,6 +517,9 @@ function initLangSwitch() {
     btn.addEventListener("click", () => {
       const next = btn.dataset.langBtn;
       if (next && next !== currentLocale) applyLocale(next);
+      // applyLocale 会用基础 key「theme.toggle」覆盖主题按钮的标签，
+      // 需要按当前档位重新写入带后缀的完整文案
+      syncThemeToggle();
     });
   });
 
@@ -524,6 +527,7 @@ function initLangSwitch() {
   window.addEventListener("popstate", () => {
     const fromUrl = new URLSearchParams(location.search).get("lang");
     if (locales.includes(fromUrl) && fromUrl !== currentLocale) applyLocale(fromUrl);
+    syncThemeToggle();
   });
 }
 
@@ -618,6 +622,31 @@ function initThemeToggle() {
   syncThemeToggle();
 }
 
+/** 首屏下载分体按钮：主按钮直接下载便携版，箭头展开「安装版」等更多选项 */
+function initDownloadSplit() {
+  const wrap = document.querySelector("[data-download-split]");
+  if (!wrap) return;
+
+  const arrow = wrap.querySelector(".btn-split-arrow");
+  const menu = wrap.querySelector(".btn-split-menu");
+
+  const setOpen = (open) => {
+    menu.hidden = !open;
+    wrap.classList.toggle("open", open);
+    arrow.setAttribute("aria-expanded", String(open));
+  };
+
+  arrow.addEventListener("click", () => setOpen(menu.hidden));
+
+  // 点击页面其他位置或按 Esc 时收起
+  document.addEventListener("click", (e) => {
+    if (!wrap.contains(e.target)) setOpen(false);
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") setOpen(false);
+  });
+}
+
 /** 首帧渲染 */
 function init() {
   applyLocale(currentLocale);
@@ -625,6 +654,7 @@ function init() {
   initHeaderState();
   initLangSwitch();
   initThemeToggle();
+  initDownloadSplit();
 }
 
 if (document.readyState === "loading") {

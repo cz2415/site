@@ -32,9 +32,11 @@ export const messages = {
     "hero.title2": "写完即走。",
     "hero.lead":
       "一款轻量、键盘优先、本地优先的桌面富文本编辑器。保存、打开、切换标签、加粗、导出——高频动作全部落在键盘上。没有账号、没有云同步、没有项目管理——只有一个光标在等你。",
-    "hero.ctaPrimary": "下载 Windows 版",
+    "hero.ctaPrimary": "下载便携版",
     "hero.ctaSecondary": "查看特性",
-    "hero.note": "v0.1.0 · Windows 系统 WebView2 · 安装包体积小、冷启动快",
+    "hero.ctaInstaller": "下载安装版",
+    "hero.ctaMore": "更多下载选项",
+    "hero.note": "v0.1.0 · Windows 系统 WebView2 · 单文件、体积小、冷启动快",
     "hero.stat1.value": "0",
     "hero.stat1.label": "账号与登录",
     "hero.stat2.value": "0",
@@ -189,8 +191,9 @@ export const messages = {
 
     "cta.title": "下一个念头，不必等它想清楚",
     "cta.desc":
-      "本地优先、无账号墙、无后台请求。下载一个安装包，双击即可使用。",
-    "cta.button": "下载 Windows 版",
+      "本地优先、无账号墙、无后台请求。免安装，下载后双击即可使用。",
+    "cta.portable": "下载便携版（免安装）",
+    "cta.installer": "下载安装版",
     "cta.secondary": "阅读开发约定",
 
     "footer.product": "产品",
@@ -230,9 +233,11 @@ export const messages = {
     "hero.title2": "Leave.",
     "hero.lead":
       "A lightweight, keyboard-first, local-first desktop rich text editor. Save, open, switch tabs, bold, export — every frequent action lives on the keyboard. No account, no cloud sync, no project management — just a cursor waiting for you.",
-    "hero.ctaPrimary": "Download for Windows",
+    "hero.ctaPrimary": "Download portable",
     "hero.ctaSecondary": "See features",
-    "hero.note": "v0.1.0 · Uses system WebView2 · Small installer, fast cold start",
+    "hero.ctaInstaller": "Download installer",
+    "hero.ctaMore": "More download options",
+    "hero.note": "v0.1.0 · Uses system WebView2 · Single small executable, fast cold start",
     "hero.stat1.value": "0",
     "hero.stat1.label": "Accounts required",
     "hero.stat2.value": "0",
@@ -397,8 +402,9 @@ export const messages = {
 
     "cta.title": "The next thought shouldn't have to wait",
     "cta.desc":
-      "Local-first, no account wall, no background requests. Download the installer and double-click.",
-    "cta.button": "Download for Windows",
+      "Local-first, no account wall, no background requests. No install needed — download and double-click.",
+    "cta.portable": "Download portable (no install)",
+    "cta.installer": "Download installer",
     "cta.secondary": "Read the conventions",
 
     "footer.product": "Product",

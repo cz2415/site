@@ -440,6 +440,106 @@ html[data-theme="dark"] .theme-toggle .ti-moon {
   background: var(--bg-sunken);
 }
 
+/* ---------- 首屏分体下载按钮（主按钮 + 箭头展开更多选项） ---------- */
+
+.btn-split {
+  position: relative;
+  display: inline-flex;
+  align-items: stretch;
+}
+
+.btn-split > .btn {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.btn-split-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  border: 0;
+  border-left: 1px solid color-mix(in srgb, var(--accent) 72%, black);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  background: var(--accent);
+  color: #ffffff;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.btn-split-arrow:hover {
+  background: color-mix(in srgb, var(--accent) 88%, black);
+}
+
+.btn-split-arrow .ico {
+  width: 15px;
+  height: 15px;
+  transition: transform 0.15s ease;
+}
+
+.btn-split.open .btn-split-arrow .ico {
+  transform: rotate(180deg);
+}
+
+.btn-split-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 30;
+  width: 100%;
+  min-width: max-content;
+  padding: 6px;
+  background: var(--bg-alt);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 12px 32px rgb(0 0 0 / 0.16);
+  transform-origin: top left;
+}
+
+.btn-split-menu:not([hidden]) {
+  animation: split-menu-in 0.14s ease;
+}
+
+@keyframes split-menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.btn-split-menu[hidden] {
+  display: none;
+}
+
+.btn-split-menu a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: calc(var(--radius-sm) - 2px);
+  color: var(--fg);
+  font-size: 14px;
+  font-weight: 550;
+  white-space: nowrap;
+}
+
+.btn-split-menu a .ico {
+  width: 15px;
+  height: 15px;
+  flex: none;
+  color: var(--fg-muted);
+}
+
+.btn-split-menu a:hover {
+  background: var(--bg-sunken);
+}
+
 .btn-sm {
   padding: 7px 15px;
   font-size: 13.5px;
