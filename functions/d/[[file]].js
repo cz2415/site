@@ -36,7 +36,8 @@ async function countDownload({ env, request }, kind) {
   const kv = env.DL_STATS;
   if (!kv) return;
 
-  const day = new Date().toISOString().slice(0, 10);
+  // 按北京时间（UTC+8）划分自然日，避免凌晨 0-8 点的下载记到前一天
+  const day = new Date(Date.now() + 8 * 3600e3).toISOString().slice(0, 10);
   const key = `dl:${day}`;
   const record = JSON.parse((await kv.get(key)) ?? "{}");
 

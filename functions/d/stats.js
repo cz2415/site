@@ -10,7 +10,7 @@ export async function onRequestGet(context) {
     return html('<p class="warn">尚未绑定 KV：请在 Pages 项目 → 设置 → 绑定 里添加 KV 命名空间，变量名 DL_STATS。</p>');
   }
 
-  const cutoff = new Date(Date.now() - CUTOFF_DAYS * 864e5).toISOString().slice(0, 10);
+  const cutoff = new Date(Date.now() + 8 * 3600e3 - CUTOFF_DAYS * 864e5).toISOString().slice(0, 10);
   const listed = await kv.list({ prefix: "dl:" });
 
   let totalPortable = 0;
@@ -57,7 +57,7 @@ export async function onRequestGet(context) {
       <div class="card"><span class="num">${totalPortable + totalSetup}</span><span class="label">总下载</span></div>
       <div class="card"><span class="num">${totalPortable}</span><span class="label">便携版</span></div>
       <div class="card"><span class="num">${totalSetup}</span><span class="label">安装版</span></div>
-      <div class="card"><span class="num small">${esc(lastDownload ?? "—")}</span><span class="label">最近一次下载</span></div>
+      <div class="card"><span class="num small">${esc(formatTime(lastDownload))}</span><span class="label">最近一次下载</span></div>
     </section>
     <section>
       <h2>访客国家</h2>
@@ -124,4 +124,15 @@ function html(inner) {
 
 function esc(value) {
   return String(value).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+}
+
+/** ISO 时间 → 北京时间可读格式（2026-09-22 20:13:09） */
+function formatTime(iso) {
+  if (!iso) return "—";
+  return (
+    new Date(new Date(iso).getTime() + 8 * 3600e3)
+      .toISOString()
+      .slice(0, 19)
+      .replace("T", " ") + "（北京时间）"
+  );
 }
