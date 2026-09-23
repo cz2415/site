@@ -14,11 +14,37 @@ export async function onRequestGet(context) {
   }
 
   try {
+    await ensureTable(db);
     return html(await render(db));
   } catch (error) {
     console.error("stats failed:", error);
     return html(`<p class="warn">查询出错：${esc(error.message)}</p>`);
   }
+}
+
+// 与跳转层共用同一张表；统计页先到也会自动建表，不再依赖"必须先有人下载过"
+let tableReady;
+
+async function ensureTable(db) {
+  tableReady ??= db
+    .batch([
+      db.prepare(`CREATE TABLE IF NOT EXISTS events (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        ts INTEGER NOT NULL,
+        kind TEXT NOT NULL,
+        country TEXT NOT NULL DEFAULT '',
+        os TEXT NOT NULL DEFAULT '',
+        ua TEXT NOT NULL DEFAULT '',
+        ref TEXT NOT NULL DEFAULT '',
+        bot INTEGER NOT NULL DEFAULT 0
+      )`),
+      db.prepare(`CREATE INDEX IF NOT EXISTS idx_events_ts ON events (ts)`),
+    ])
+    .catch((error) => {
+      tableReady = null;
+      throw error;
+    });
+  return tableReady;
 }
 
 async function render(db) {
